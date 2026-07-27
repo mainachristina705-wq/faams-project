@@ -1,7 +1,7 @@
 // FAAMS frontend logic.
 // This file handles login, navigation, and talking to the backend API.
 
-const API = 'http://localhost:5000/api';
+const API = 'https://faams-backend-up0k.onrender.com/api';
 
 let state = {
   token: localStorage_replacement_get('faams_token'),
