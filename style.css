@@ -1,0 +1,269 @@
+:root{
+  --navy:#132C46;
+  --navy-deep:#0B1F33;
+  --gold:#B4872F;
+  --gold-light:#E8D9B5;
+  --paper:#F6F3EC;
+  --paper-card:#FFFFFF;
+  --ink:#1C1C1A;
+  --ink-soft:#5B5A54;
+  --line:#DCD6C8;
+  --green:#2F6B4F;
+  --green-bg:#E7F1EA;
+  --red:#A33B2E;
+  --red-bg:#F7E9E5;
+  --amber:#8A5A16;
+  --amber-bg:#F6ECDA;
+  --radius:6px;
+  font-size:16px;
+}
+
+/* ---------- Per-role accent themes ---------- */
+/* MDA officer keeps the shared navy/gold Treasury base (flag green as its
+   accent). Treasury accountant and Director of budget get a full palette
+   swap — not just an accent color — so each feels like a distinct,
+   purpose-built workspace. */
+body.role-mda_officer{
+  --role-accent:#00723F;      /* flag green — origination / new requests */
+  --role-accent-dark:#00502C;
+  --role-bg:#E1F0E7;
+}
+
+/* Treasury accountant — light blue, white, red */
+body.role-treasury_accountant{
+  --navy:#1565A8;              /* topbar: medium blue */
+  --navy-deep:#EAF4FC;         /* sidebar: light blue */
+  --paper:#FFFFFF;             /* page background: white */
+  --role-accent:#C8102E;       /* red — scrutiny / verification */
+  --role-accent-dark:#8C0B20;
+  --role-bg:#FBE4E8;
+}
+body.role-treasury_accountant .sidebar button{color:#0B3D66;}
+body.role-treasury_accountant .sidebar button:hover{background:rgba(21,101,168,.08);color:#0B3D66;}
+body.role-treasury_accountant .sidebar button.active{background:rgba(200,16,46,.08);color:#8C0B20;}
+body.role-treasury_accountant .app-subtitle{color:#D7ECFB;}
+body.role-treasury_accountant .user-name{color:#D7ECFB;}
+body.role-treasury_accountant .topbar .btn-ghost{border-color:rgba(255,255,255,.5);color:#fff;}
+body.role-treasury_accountant .table-wrap,
+body.role-treasury_accountant .stat-card,
+body.role-treasury_accountant .form-card{border-color:#BFDCF0;}
+
+/* Director of budget — executive gold, black, white */
+body.role-director_of_budget{
+  --navy:#0A0A09;               /* topbar: black */
+  --navy-deep:#000000;          /* sidebar: black */
+  --paper:#F7F5EF;              /* page background: warm white */
+  --role-accent:#C9A227;        /* gold — final authority */
+  --role-accent-dark:#8A6D1A;
+  --role-bg:#FBF3DC;
+}
+body.role-director_of_budget .role-badge{color:#1A1509;}
+body.role-director_of_budget .content .btn-primary{
+  background:#0A0A09;color:#C9A227;border:1px solid #C9A227;
+}
+body.role-director_of_budget .table-wrap,
+body.role-director_of_budget .stat-card,
+body.role-director_of_budget .form-card{border-color:#E3D6A8;}
+body.role-director_of_budget th{background:#FBF3DC;}
+
+body.role-admin{
+  --role-accent:#A6790F;      /* coat-of-arms gold — system administration */
+  --role-accent-dark:#6B4D09;
+  --role-bg:#F5EEDC;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Inter',sans-serif;
+  line-height:1.55;
+}
+h1,h2,h3{font-family:'Source Serif 4',serif;font-weight:600;margin:0;}
+.hidden{display:none !important;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+
+/* ---------- Seal / signature motif ---------- */
+.seal{width:64px;height:64px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;}
+.seal.small{width:34px;height:34px;margin:0;}
+.seal svg{display:block;}
+
+/* ---------- Login screen ---------- */
+.screen{min-height:100vh;}
+#login-screen{
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(201,162,39,.32) 0%, rgba(201,162,39,0) 42%),
+    linear-gradient(135deg, #081826 0%, #0B2A44 32%, #0E3B52 62%, #0F5E52 100%);
+  padding:40px 20px;
+}
+#login-screen::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 12% 85%, rgba(0,114,63,.35) 0%, rgba(0,114,63,0) 38%),
+    radial-gradient(circle at 90% 12%, rgba(200,16,46,.18) 0%, rgba(200,16,46,0) 32%);
+}
+.login-wrap{width:100%;max-width:420px;text-align:center;position:relative;z-index:1;}
+.brand-card{
+  background:var(--paper-card);border-radius:var(--radius);
+  padding:28px 26px 22px;margin-bottom:16px;
+  box-shadow:0 12px 32px rgba(0,0,0,.35);
+}
+.brand-card h1{color:var(--navy);font-size:22px;line-height:1.3;margin-bottom:6px;}
+.tagline{color:var(--ink-soft);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;margin:0;}
+.panel{
+  background:var(--paper-card);
+  border-radius:var(--radius);
+  padding:28px 26px;
+  text-align:left;
+  box-shadow:0 12px 32px rgba(0,0,0,.35);
+}
+.panel h2{font-size:18px;margin-bottom:18px;color:var(--navy);}
+.panel label{display:block;font-size:13px;color:var(--ink-soft);margin-bottom:14px;}
+.panel input,.panel select,.panel textarea{
+  display:block;width:100%;margin-top:6px;padding:10px 12px;
+  border:1px solid var(--line);border-radius:4px;font-size:14px;
+  font-family:'Inter',sans-serif;background:#fff;color:var(--ink);
+}
+.panel input:focus,.panel select:focus,.panel textarea:focus{outline:2px solid var(--navy);outline-offset:1px;}
+.btn-primary{
+  width:100%;padding:11px;background:var(--navy);color:#fff;border:none;
+  border-radius:4px;font-size:14px;font-weight:600;cursor:pointer;margin-top:4px;
+}
+.btn-primary:hover{background:var(--navy-deep);}
+.btn-ghost{
+  background:transparent;border:1px solid var(--line);color:var(--ink);
+  padding:8px 14px;border-radius:4px;font-size:13px;cursor:pointer;
+}
+.btn-ghost:hover{background:var(--paper);}
+.switch-link{text-align:center;font-size:13px;margin-top:16px;color:var(--ink-soft);}
+.switch-link a{color:var(--navy);font-weight:600;text-decoration:none;}
+.error-text{color:var(--red);font-size:13px;margin:0 0 8px;min-height:0;}
+.error-text:empty{display:none;}
+
+/* ---------- App shell ---------- */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--navy);color:#fff;padding:12px 24px;
+  border-bottom:3px solid var(--role-accent, var(--gold));
+}
+.topbar-left{display:flex;align-items:center;gap:12px;}
+.app-title{font-family:'Source Serif 4',serif;font-weight:600;font-size:16px;margin:0;}
+.app-subtitle{font-size:11px;color:var(--gold-light);margin:0;text-transform:uppercase;letter-spacing:.05em;}
+.topbar-right{display:flex;align-items:center;gap:14px;}
+.role-badge{
+  background:var(--role-accent, var(--gold));color:#fff;font-size:11px;font-weight:600;
+  padding:4px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.04em;
+}
+.user-name{font-size:13px;color:var(--gold-light);}
+.topbar .btn-ghost{border-color:rgba(255,255,255,.3);color:#fff;}
+.topbar .btn-ghost:hover{background:rgba(255,255,255,.08);}
+
+.layout{display:flex;min-height:calc(100vh - 58px);}
+.sidebar{
+  width:220px;background:var(--navy-deep);padding:20px 0;flex-shrink:0;
+}
+.sidebar button{
+  display:block;width:100%;text-align:left;background:none;border:none;
+  color:#C8CCD3;padding:12px 24px;font-size:14px;cursor:pointer;
+  border-left:3px solid transparent;
+}
+.sidebar button:hover{background:rgba(255,255,255,.05);color:#fff;}
+.sidebar button.active{
+  color:#fff;border-left-color:var(--role-accent, var(--gold));
+  background:rgba(255,255,255,.06);font-weight:600;
+}
+.content{flex:1;padding:28px 40px;max-width:1400px;margin:0 auto;width:100%;}
+.content h2{
+  font-size:20px;color:var(--navy);margin-bottom:4px;
+  padding-left:12px;border-left:4px solid var(--role-accent, var(--gold));
+}
+.content .subhead{color:var(--ink-soft);font-size:13px;margin:0 0 22px;padding-left:16px;}
+
+/* ---------- Cards / stats ---------- */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:24px;}
+.stat-card{
+  background:var(--role-bg, var(--paper-card));border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px 18px;
+}
+.stat-card .label{font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;}
+.stat-card .value{
+  font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;
+  color:var(--role-accent-dark, var(--navy));margin-top:6px;
+}
+
+/* ---------- Table ---------- */
+.table-wrap{background:var(--paper-card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+table{width:100%;border-collapse:collapse;font-size:13.5px;}
+th{
+  text-align:left;background:var(--paper);color:var(--ink-soft);font-weight:600;
+  font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;padding:10px 14px;
+  border-bottom:1px solid var(--line);
+}
+td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+tbody tr:hover td{background:rgba(0,0,0,.02);}
+.amount{font-family:'IBM Plex Mono',monospace;}
+
+/* ---------- Vote head chips (lively tags on the fund request table) ---------- */
+.vh-chip{display:inline-block;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:4px;white-space:nowrap;}
+.vh-chip.chip-a{background:#E1F0E7;color:#00502C;}
+.vh-chip.chip-b{background:#FDE7EA;color:#8C0B20;}
+.vh-chip.chip-c{background:#E6F0FA;color:#1565A8;}
+.vh-chip.chip-d{background:#F3E8FC;color:#6B3FA0;}
+.vh-chip.chip-e{background:#FDF0DC;color:#8A5A16;}
+.vh-chip.chip-f{background:#E6FAF5;color:#0F6E56;}
+
+/* ---------- Status pills ---------- */
+.pill{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.03em;}
+.pill.pending{background:var(--amber-bg);color:var(--amber);}
+.pill.director_review{background:var(--amber-bg);color:var(--amber);}
+.pill.approved{background:var(--green-bg);color:var(--green);}
+.pill.rejected{background:var(--red-bg);color:var(--red);}
+.pill.revision_requested{background:#EDE7F6;color:#5B3E9E;}
+.dup-flag{color:var(--red);font-size:11px;font-weight:600;margin-left:6px;}
+
+/* ---------- Forms within content ---------- */
+.form-card{background:var(--paper-card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;max-width:600px;margin-bottom:24px;}
+.form-card label{display:block;font-size:13px;color:var(--ink-soft);margin-bottom:14px;}
+.form-card input,.form-card select,.form-card textarea{
+  display:block;width:100%;margin-top:6px;padding:10px 12px;
+  border:1px solid var(--line);border-radius:4px;font-size:14px;
+  font-family:'Inter',sans-serif;background:#fff;color:var(--ink);
+}
+.form-card textarea{resize:vertical;min-height:70px;}
+.content .btn-primary{
+  width:auto;padding:10px 20px;background:var(--role-accent-dark, var(--navy));
+}
+.content .btn-primary:hover{filter:brightness(1.1);}
+
+.action-btns{display:flex;gap:6px;flex-wrap:wrap;}
+.btn-sm{
+  font-size:12px;padding:6px 10px;border-radius:4px;border:1px solid var(--line);
+  background:#fff;cursor:pointer;font-weight:600;
+}
+.btn-sm.approve{color:var(--green);border-color:var(--green);}
+.btn-sm.approve:hover{background:var(--green-bg);}
+.btn-sm.reject{color:var(--red);border-color:var(--red);}
+.btn-sm.reject:hover{background:var(--red-bg);}
+.btn-sm.revise{color:var(--amber);border-color:var(--amber);}
+.btn-sm.revise:hover{background:var(--amber-bg);}
+
+.empty-state{padding:40px 20px;text-align:center;color:var(--ink-soft);font-size:14px;}
+
+/* ---------- Toast ---------- */
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  background:var(--navy-deep);color:#fff;padding:12px 20px;border-radius:6px;
+  font-size:13.5px;box-shadow:0 8px 20px rgba(0,0,0,.3);z-index:100;
+}
+.toast.error{background:var(--red);}
+
+@media (max-width:720px){
+  .layout{flex-direction:column;}
+  .sidebar{width:100%;display:flex;overflow-x:auto;padding:8px;}
+  .sidebar button{width:auto;white-space:nowrap;border-left:none;border-bottom:3px solid transparent;}
+  .sidebar button.active{border-left:none;border-bottom-color:var(--gold);}
+}

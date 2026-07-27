@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FAAMS &mdash; Funds Allocation &amp; Approval Management System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<section id="login-screen" class="screen">
+  <div class="login-wrap">
+    <div class="seal">
+      <svg viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="FAAMS seal">
+        <circle cx="32" cy="32" r="30" fill="#0B1F33" stroke="#C9A227" stroke-width="2.5"/>
+        <path d="M32 12 L48 20 V33 C48 44 41 51 32 55 C23 51 16 44 16 33 V20 Z" fill="#00723F"/>
+        <path d="M32 12 L48 20 V33 C48 44 41 51 32 55 Z" fill="#C8102E"/>
+        <circle cx="32" cy="32" r="10" fill="#12100E" stroke="#C9A227" stroke-width="1.5"/>
+        <text x="32" y="36" text-anchor="middle" font-size="10" fill="#C9A227" font-family="'Source Serif 4',serif" font-weight="600">FT</text>
+      </svg>
+    </div>
+    <h1>Funds Allocation &amp; Approval<br/>Management System</h1>
+    <p class="tagline">National Treasury &mdash; Treasury Operations Portal</p>
+
+    <form id="login-form" class="panel">
+      <h2>Sign in</h2>
+      <label>Email
+        <input type="email" id="login-email" required placeholder="name@treasury.go.ke" />
+      </label>
+      <label>Password
+        <input type="password" id="login-password" required placeholder="Enter your password" />
+      </label>
+      <p class="error-text" id="login-error"></p>
+      <button type="submit" class="btn-primary">Sign in</button>
+      <p class="switch-link">No account yet? <a href="#" id="show-register">Register</a></p>
+    </form>
+
+    <form id="register-form" class="panel hidden">
+      <h2>Create account</h2>
+      <label>Full name
+        <input type="text" id="reg-name" required placeholder="Jane Wanjiru" />
+      </label>
+      <label>Email
+        <input type="email" id="reg-email" required placeholder="name@treasury.go.ke" />
+      </label>
+      <label>Password
+        <input type="password" id="reg-password" required placeholder="At least 8 characters" />
+      </label>
+      <label>Role
+        <select id="reg-role" required>
+          <option value="">Select a role</option>
+          <option value="mda_officer">MDA officer</option>
+          <option value="treasury_accountant">Treasury accountant</option>
+          <option value="director_of_budget">Director of budget</option>
+          <option value="admin">System administrator</option>
+        </select>
+      </label>
+      <label id="reg-dept-wrap">Department
+        <select id="reg-department">
+          <option value="">Select a department</option>
+        </select>
+      </label>
+      <p class="error-text" id="register-error"></p>
+      <button type="submit" class="btn-primary">Create account</button>
+      <p class="switch-link">Already registered? <a href="#" id="show-login">Sign in</a></p>
+    </form>
+  </div>
+</section>
+
+<!-- MAIN APP -->
+<section id="app-screen" class="screen hidden">
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="seal small">
+        <svg viewBox="0 0 64 64" width="34" height="34" role="img" aria-label="FAAMS seal">
+          <circle cx="32" cy="32" r="30" fill="#0B1F33" stroke="#C9A227" stroke-width="3"/>
+          <path d="M32 12 L48 20 V33 C48 44 41 51 32 55 C23 51 16 44 16 33 V20 Z" fill="#00723F"/>
+          <path d="M32 12 L48 20 V33 C48 44 41 51 32 55 Z" fill="#C8102E"/>
+          <circle cx="32" cy="32" r="10" fill="#12100E" stroke="#C9A227" stroke-width="2"/>
+          <text x="32" y="36" text-anchor="middle" font-size="10" fill="#C9A227" font-family="'Source Serif 4',serif" font-weight="600">FT</text>
+        </svg>
+      </div>
+      <div>
+        <p class="app-title">FAAMS</p>
+        <p class="app-subtitle">Treasury Operations Portal</p>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <span class="role-badge" id="user-role-badge"></span>
+      <span class="user-name" id="user-name"></span>
+      <button class="btn-ghost" id="logout-btn">Sign out</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar" id="sidebar"></nav>
+    <main class="content" id="content"></main>
+  </div>
+</section>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
